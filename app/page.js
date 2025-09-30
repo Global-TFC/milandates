@@ -136,12 +136,14 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      <main className="min-h-screen bg-[#e0e0e0]">
+      <main className="min-h-screen bg-[#e0e0e0] scroll-smooth">
+        {/* Top anchor for navbar */}
+        <div id="top" />
         {/* Hero Section */}
         <Hero whatsappNumber={whatsappNumber} />
 
       {/* Best Sellers */}
-      <section className="py-20 px-4 bg-[#e8e8e8]">
+      <section id="best-sellers" className="py-24 px-4 bg-[#e8e8e8]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#3a3a3a] mb-4">
@@ -165,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 px-4">
+      <section id="products" className="py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-[#3a3a3a] mb-4">
@@ -216,7 +218,7 @@ export default function Home() {
         </div>
       </section>
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section id="features" className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <div
@@ -295,7 +297,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-4 bg-[#e8e8e8]">
+      <section id="about" className="py-24 px-4 bg-[#e8e8e8]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-[#3a3a3a] mb-6">
             The Art of Premium Dates
@@ -330,7 +332,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4">
+      <section id="contact" className="py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-[#3a3a3a] mb-6">
             Order Today

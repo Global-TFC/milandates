@@ -28,7 +28,9 @@ export default function Hero({ whatsappNumber }) {
           >
             <img
               src={slide}
-              alt={`Premium quality dates collection showcase ${index + 1} - Handpicked from world's finest farms`}
+              alt={`Premium quality dates collection showcase ${
+                index + 1
+              } - Handpicked from world's finest farms`}
               className="w-full h-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
             />
@@ -63,10 +65,9 @@ export default function Hero({ whatsappNumber }) {
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Logo/Brand */}
         <div className="mb-8">
-         
-            <h1 className="text-5xl md:text-7xl font-bold text-[#fff] tracking-tight">
-              Milan Dates
-            </h1>
+          <h1 className="text-5xl md:text-7xl font-bold text-[#fff] tracking-tight">
+            Milan Dates
+          </h1>
         </div>
 
         {/* Tagline */}
@@ -102,17 +103,16 @@ export default function Hero({ whatsappNumber }) {
           </button>
 
           <button
-           style={{
-            boxShadow:
-              "inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff",
-          }}
+            style={{
+              boxShadow:
+                "inset 6px 6px 12px #bebebe, inset -6px -6px 12px #ffffff",
+            }}
             onClick={() =>
               document
                 .getElementById("products")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
             className="px-10 py-5 rounded-2xl bg-[#e0e0e0]  font-medium transition-all duration-300 hover:scale-[1.05] active:scale-95"
-           
           >
             View Collection
           </button>
