@@ -89,10 +89,56 @@ export default function Home() {
 
   const whatsappNumber = "1234567890"; // Replace with actual WhatsApp number
 
+  // Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Milan Dates",
+    "description": "Premium quality dates from the world's finest farms, delivered fresh to your doorstep",
+    "url": "https://milandates.com",
+    "telephone": whatsappNumber,
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Premium Dates Collection",
+      "itemListElement": products.map((product, index) => ({
+        "@type": "Product",
+        "position": index + 1,
+        "name": product.name,
+        "description": product.description,
+        "image": `https://milandates.com/${product.image}`,
+        "offers": {
+          "@type": "Offer",
+          "price": product.price,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "brand": {
+          "@type": "Brand",
+          "name": "Milan Dates"
+        },
+        "category": product.category
+      }))
+    },
+    "sameAs": [
+      `https://wa.me/${whatsappNumber}`
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-[#e0e0e0]">
-      {/* Hero Section */}
-      <Hero whatsappNumber={whatsappNumber} />
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
+      <main className="min-h-screen bg-[#e0e0e0]">
+        {/* Hero Section */}
+        <Hero whatsappNumber={whatsappNumber} />
 
       {/* Best Sellers */}
       <section className="py-20 px-4 bg-[#e8e8e8]">
@@ -333,6 +379,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <WhatsAppButton whatsappNumber={whatsappNumber} />
-    </div>
+      </main>
+    </>
   );
 }

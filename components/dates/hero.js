@@ -15,7 +15,7 @@ export default function Hero({ whatsappNumber }) {
   }, []);
 
   return (
-    <section className="relative min-h-[100vh] flex items-center justify-center px-4 overflow-hidden">
+    <header className="relative min-h-[100vh] flex items-center justify-center px-4 overflow-hidden">
       {/* Sliding Banner Background */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -28,8 +28,9 @@ export default function Hero({ whatsappNumber }) {
           >
             <img
               src={slide}
-              alt={`Premium dates showcase ${index + 1}`}
+              alt={`Premium quality dates collection showcase ${index + 1} - Handpicked from world's finest farms`}
               className="w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
             />
 
             {/* Subtle dark overlay for text readability */}
@@ -166,6 +167,6 @@ export default function Hero({ whatsappNumber }) {
           </div>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
