@@ -11,6 +11,7 @@ import {
 import ProductCard from "../components/dates/productCard";
 import Hero from "../components/dates/hero";
 import WhatsAppButton from "../components/dates/whatsapp";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -382,6 +383,9 @@ export default function Home() {
       {/* Floating WhatsApp Button */}
       <WhatsAppButton whatsappNumber={whatsappNumber} />
       </main>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
