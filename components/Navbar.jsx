@@ -1,10 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-// import WhatsAppButton from "./dates/whatsapp";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "../contexts/CartContext";
+import { Badge } from "./ui/badge";
+import CartSidebar from "./CartSidebar";
 
-export default function Navbar() {
+export default function Navbar({ whatsappNumber = "1234567890" }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { getTotalItems } = useCart();
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-2">
       <div
@@ -64,15 +69,30 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <a href={`tel:${1234567890}`}
-            className="px-4 py-2 rounded-full bg-[#e0e0e0] text-[#3a3a3a] font-semibold"
+          {/* Cart Button */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative px-4 py-2 rounded-full bg-[#e0e0e0] text-[#3a3a3a] font-semibold"
             style={{
               boxShadow:
                 "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
             }}
           >
-            Call Us
-          </a>
+            <div className="flex items-center gap-2">
+              <ShoppingCart className="w-4 h-4" />
+              <span>Cart</span>
+              {getTotalItems() > 0 && (
+                <Badge 
+                  className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center p-0 text-xs bg-[#8b7355] text-white"
+                  style={{
+                    boxShadow: "2px 2px 4px #bebebe, -2px -2px 4px #ffffff",
+                  }}
+                >
+                  {getTotalItems()}
+                </Badge>
+              )}
+            </div>
+          </button>
           {/* Mobile menu toggle */}
           <button
             className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#e0e0e0]"
@@ -110,6 +130,13 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Cart Sidebar */}
+      <CartSidebar 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)}
+        whatsappNumber={whatsappNumber}
+      />
     </nav>
   );
 }

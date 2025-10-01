@@ -1,10 +1,17 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
+import { useCart } from "../../contexts/CartContext";
 
 export default function ProductCard({ product, whatsappNumber }) {
+  const { addToCart } = useCart();
+
   const handleOrder = () => {
-    const message = `Hello! I'd like to order: ${product.name} (${product.price} SAR)`;
+    const message = `Hello! I'd like to order: ${product.name} (₹${product.price})`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product);
   };
 
   return (
@@ -56,17 +63,18 @@ export default function ProductCard({ product, whatsappNumber }) {
           {product.description}
         </p>
 
-        {/* Price and Order Button */}
+        {/* Price and Action Buttons */}
         <div className="flex items-center justify-between">
           <div>
             <span className="text-3xl font-bold text-[#3a3a3a]">
-              {product.price}
+              ₹{product.price}
             </span>
-            <span className="text-lg text-[#8a8a8a] ml-2">SAR</span>
+            <span className="text-lg text-[#8a8a8a] ml-2">INR</span>
           </div>
 
+          {/* Cart Button - Adds to cart */}
           <button
-            onClick={handleOrder}
+            onClick={handleAddToCart}
             className="p-4 rounded-2xl bg-[#e0e0e0] transition-all duration-300 hover:scale-110 active:scale-95 group"
             style={{
               boxShadow: '6px 6px 12px #bebebe, -6px -6px 12px #ffffff'
